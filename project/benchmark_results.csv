@@ -1,0 +1,4 @@
+format,rows,load_sec,train_sec,peak_ram_gb
+Parquet,1000000,22.19,7.83,0.92
+CSV,1000000,375.81,7.76,3.84
+HDF5,1000000,96.84,7.78,7.66
