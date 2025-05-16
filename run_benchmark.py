@@ -18,17 +18,6 @@ def downcast_float32(df: pd.DataFrame) -> pd.DataFrame:
     df[fcols] = df[fcols].astype(np.float32, copy=False)
     return df
 
-# def load_csv(path="data.csv") -> pd.DataFrame:
-#     df = pd.read_csv(path, low_memory=False)
-#     return downcast_float32(df)
-# def load_parquet(path="data_2gb.parquet") -> pd.DataFrame:
-#     # read *all* row-groups with Arrow → pandas
-#     df = pq.read_table(path).to_pandas()
-#     return downcast_float32(df)
-
-# def load_hdf5(path="data_2gb.h5") -> pd.DataFrame:
-#     df = pd.read_hdf(path, "train")
-#     return downcast_float32(df)
 def load_csv(path="data.csv",
              chunksize=250_000,
              concat_every=8):           # concat after N chunks → no big freeze
@@ -98,8 +87,8 @@ if POST_SAMPLE_N and len(df) > POST_SAMPLE_N:
 # build X / y
 num_cols = df.select_dtypes(include=["number"]).columns.drop(["target", "test"])
 X = df[num_cols].to_numpy(dtype=np.float32, copy=False)
-# y = df["target"].fillna(0).astype(np.int8).to_numpy(copy=False) #enable for parquet / csv
-y = df["target"].clip(lower=0).astype(np.int8, copy=False) #enable for hdf5
+y = df["target"].fillna(0).astype(np.int8).to_numpy(copy=False) #enable for parquet / csv
+# y = df["target"].clip(lower=0).astype(np.int8, copy=False) #enable for hdf5
 
 
 dtrain = xgb.DMatrix(X, label=y)
