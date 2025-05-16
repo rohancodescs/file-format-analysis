@@ -12,7 +12,7 @@ This project benchmarks three storage formats—CSV, Snappy‑Parquet, and Blosc
 | File                    | Purpose                                                                         |
 | ----------------------- | ---------------------------------------------------------------------------       |
 | `project2.ipynb`        | **Main notebook**: converts formats, runs benchmarks, creates plots.                            |
-| `run_benchmark.py and bench_single.py (OLD)`       | CLI helper that executes one benchmark head‑less (development aid).         |
+| `run_benchmark.py`       | CLI helper that executes one benchmark head‑less (development aid).         |
 | `proj.ipynb`            | Early prototype exploring HDF5 compression levels.                                                      |
 | `benchmark_results.csv` | Auto‑appended log of every benchmark run.                                   |
 | *data files*            | Generated locally (git‑ignored): `data.parquet`, `data.csv`, `data.h5`. |
