@@ -9,13 +9,13 @@ Rohan Bhatt • Shubhang Srikoti
 
 This project benchmarks three storage formats—CSV, Snappy‑Parquet, and Blosc‑Zstd HDF5—on their impact to data‑load latency, peak memory, and XGBoost training time. All experiments use the **American Express Default Prediction** dataset (≈17 M rows, 193 columns).
 
-| File                    | Purpose                                                                     |
-| ----------------------- | --------------------------------------------------------------------------- |
-| `project2.ipynb`        | **Main notebook**: converts formats, runs benchmarks, creates plots.        |
-| `run_benchmark.py and bench_single.py (OLD)`       | CLI helper that executes one benchmark head‑less (development aid).         |
-| `proj.ipynb`            | Early prototype exploring HDF5 compression levels.                          |
+| File                    | Purpose                                                                         |
+| ----------------------- | ---------------------------------------------------------------------------       |
+| `project2.ipynb`        | **Main notebook**: converts formats, runs benchmarks, creates plots.                            |
+| `run_benchmark.py`       | CLI helper that executes one benchmark head‑less (development aid).         |
+| `proj.ipynb`            | Early prototype exploring HDF5 compression levels.                                                      |
 | `benchmark_results.csv` | Auto‑appended log of every benchmark run.                                   |
-| *data files*            | Generated locally (git‑ignored): `data.parquet`, `data.csv`, `data_hex.h5`. |
+| *data files*            | Generated locally (git‑ignored): `data.parquet`, `data.csv`, `data.h5`. |
 
 ---
 
@@ -23,17 +23,13 @@ This project benchmarks three storage formats—CSV, Snappy‑Parquet, and Blosc
 
 ```bash
 # clone the repository
-git clone https://github.com/<your‑org>/<repo>.git
-cd <repo>
+git clone https://github.com/rohancodescs/file-format-analysis
 
-# create a virtual environment (Python 3.9+ recommended)
+# create a virtual environment
 python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate 
 
-# install project requirements
-pip install -r requirements.txt
-
-# download the dataset (≈12 GB) with Kaggle CLI
+# download the dataset (≈12 GB) with Kaggle CLI (first cell in jupyter notebook, instructions below if you want to use CLI)
 pip install kaggle   # if you don't already have it
 kaggle competitions download -c amex-default-prediction -f train_data.parquet
 mv train_data.parquet data.parquet
@@ -82,7 +78,7 @@ python bench_single.py HDF5
 Each command prints a JSON result and appends the same row to `benchmark_results.csv`.
 
 
-## 5 · Re‑Creating Artefacts
+## 5 · Re‑Creating Artifacts
 
 | Step           | Command (inside notebook)    | Approx time *M4 Pro CPU* |
 | -------------- | ---------------------------- | -------------------- |
