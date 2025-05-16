@@ -23,17 +23,13 @@ This project benchmarks three storage formats—CSV, Snappy‑Parquet, and Blosc
 
 ```bash
 # clone the repository
-git clone https://github.com/<your‑org>/<repo>.git
-cd <repo>
+git clone https://github.com/rohancodescs/file-format-analysis
 
-# create a virtual environment (Python 3.9+ recommended)
+# create a virtual environment
 python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate 
 
-# install project requirements
-pip install -r requirements.txt
-
-# download the dataset (≈12 GB) with Kaggle CLI
+# download the dataset (≈12 GB) with Kaggle CLI (first cell in jupyter notebook, instructions below if you want to use CLI)
 pip install kaggle   # if you don't already have it
 kaggle competitions download -c amex-default-prediction -f train_data.parquet
 mv train_data.parquet data.parquet
