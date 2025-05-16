@@ -78,7 +78,7 @@ python bench_single.py HDF5
 Each command prints a JSON result and appends the same row to `benchmark_results.csv`.
 
 
-## 5 · Re‑Creating Artefacts
+## 5 · Re‑Creating Artifacts
 
 | Step           | Command (inside notebook)    | Approx time *M4 Pro CPU* |
 | -------------- | ---------------------------- | -------------------- |
